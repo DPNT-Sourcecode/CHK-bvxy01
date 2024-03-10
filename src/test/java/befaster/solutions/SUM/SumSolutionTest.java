@@ -29,5 +29,26 @@ public class SumSolutionTest {
     public void testSum_whenXIsNegative() {
     	assertThat(sum.compute(-1, 1), equalTo(0));
     }
+    
+    @Test
+    public void testSum_whenXIsOverHundred() {
+    	assertThat(sum.compute(200, 1), equalTo(0));
+    }
+    
+    @Test
+    public void testSum_whenYIsZero() {
+    	assertThat(sum.compute(10, 0), equalTo(10));
+    }
+    
+    @Test
+    public void testSum_whenYIsNegative() {
+    	assertThat(sum.compute(19, -1), equalTo(0));
+    }
+    
+    @Test
+    public void testSum_whenYIsOverHundred() {
+    	assertThat(sum.compute(100, 110), equalTo(0));
+    }
 }
+
 
