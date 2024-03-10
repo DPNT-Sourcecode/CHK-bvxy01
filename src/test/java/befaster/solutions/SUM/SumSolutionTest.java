@@ -36,7 +36,7 @@ public class SumSolutionTest {
     }
     
     @Test
-    public void testSum_whenXIsOverHundred() {
+    public void testSum_whenXIsOverHundred_throwsIllegalArgumentException() {
     	assertThrows(IllegalArgumentException.class, () -> {
     		sum.compute(200, 1);
     	});
@@ -48,15 +48,20 @@ public class SumSolutionTest {
     }
     
     @Test
-    public void testSum_whenYIsNegative() {
-    	assertThat(sum.compute(19, -1), equalTo(0));
+    public void testSum_whenYIsNegative_throwsIllegalArgumentException() {
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		sum.compute(10, -10);
+    	});
     }
     
     @Test
-    public void testSum_whenYIsOverHundred() {
-    	assertThat(sum.compute(100, 110), equalTo(0));
+    public void testSum_whenYIsOverHundred_throwsIllegalArgumentException() {
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		sum.compute(10, 210);
+    	});
     }
 }
+
 
 
 
