@@ -33,5 +33,16 @@ public class CheckoutSolutionTest {
     public void testCheckoutSolution_withABProducts() {
     	assertThat(checkoutSolution.checkout("AB"), equalTo(80));
     }
+    
+    @Test
+    public void testCheckoutSolution_withInvalidProduct() {
+    	assertThat(checkoutSolution.checkout("X"), equalTo(-1));
+    }
+    
+    @Test
+    public void testCheckoutSolution_withInvalidAndValidProduct() {
+    	assertThat(checkoutSolution.checkout("AX"), equalTo(-1));
+    }
 }
+
 
