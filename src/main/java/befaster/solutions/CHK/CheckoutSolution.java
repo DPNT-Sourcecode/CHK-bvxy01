@@ -14,9 +14,12 @@ public class CheckoutSolution {
 		priceMap.put('B', 30);
 		priceMap.put('C', 20);
 		priceMap.put('D', 15);
+		priceMap.put('E', 40);
 		
 		offersMap.put('A', new Offer(3, 130));
+		offersMap.put('A', new Offer(5, 200));
 		offersMap.put('B', new Offer(2, 45));
+		offersMap.put('E', new Offer(2, 45));
 	}
 	
 	
@@ -76,4 +79,5 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
