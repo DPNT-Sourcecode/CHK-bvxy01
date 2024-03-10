@@ -45,9 +45,17 @@ public class CheckoutSolution {
     		}
     		
     		int price = priceMap.get(item);
+    		Offer offer = offersMap.getOrDefault(item, null);
     		
+    		if (offer != null) {
+    			total += (count / offer.getQuantity()) * offer.getPrice();
+    			count %= offer.getQuantity();
+    		}
+    		
+    		total += count * price;
     	}
     	
+    	return total;
     }
     
     private static class Offer {
@@ -64,7 +72,8 @@ public class CheckoutSolution {
     	}
     	
     	public int getPrice() {
-    		return this.getPrice();
+    		return this.price;
     	}
     }
 }
+
