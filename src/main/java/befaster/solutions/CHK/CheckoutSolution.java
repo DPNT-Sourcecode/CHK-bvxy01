@@ -14,6 +14,9 @@ public class CheckoutSolution {
 		priceMap.put('B', 30);
 		priceMap.put('C', 20);
 		priceMap.put('D', 15);
+		
+		offersMap.put('A', new Offer(3, 130));
+		offersMap.put('B', new Offer(2, 45));
 	}
 	
 	
@@ -37,12 +40,31 @@ public class CheckoutSolution {
     		char item = entry.getKey();
     		int count = entry.getValue();
     		
+    		if (!priceMap.containsKey(item) || count < 0) {
+    			return -1;
+    		}
     		
+    		int price = priceMap.get(item);
     		
     	}
     	
     }
+    
+    private static class Offer {
+    	private int quantity;
+    	private int price;
+    	
+    	public Offer(int quantity, int price) {
+    		this.quantity = quantity;
+    		this.price = price;
+    	}
+    	
+    	public int getQuantity() {
+    		return this.quantity;
+    	}
+    	
+    	public int getPrice() {
+    		return this.getPrice();
+    	}
+    }
 }
-
-
-
