@@ -1,6 +1,9 @@
 package befaster.solutions.SUM;
 
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.BeforeEach;
 
 
@@ -26,13 +29,17 @@ public class SumSolutionTest {
     }
     
     @Test
-    public void testSum_whenXIsNegative() {
-    	assertThat(sum.compute(-1, 1), equalTo(0));
+    public void testSum_whenXIsNegative_throwsIllegalArgumentException() {
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		sum.compute(-1, 1);
+    	});
     }
     
     @Test
     public void testSum_whenXIsOverHundred() {
-    	assertThat(sum.compute(200, 1), equalTo(0));
+    	assertThrows(IllegalArgumentException.class, () -> {
+    		sum.compute(200, 1);
+    	});
     }
     
     @Test
@@ -50,5 +57,6 @@ public class SumSolutionTest {
     	assertThat(sum.compute(100, 110), equalTo(0));
     }
 }
+
 
 
