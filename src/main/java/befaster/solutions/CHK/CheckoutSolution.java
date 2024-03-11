@@ -26,7 +26,7 @@ public class CheckoutSolution {
 		listB.add(new Offer(2, 45));
 		offersMap.put('B', listB);
 		List<Offer> listE = new ArrayList<>();
-		listE.add( new Offer(2, 40));
+		listE.add( new Offer(2, 80));
 		offersMap.put('E', listE);
 	}
 	
@@ -99,5 +99,6 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
