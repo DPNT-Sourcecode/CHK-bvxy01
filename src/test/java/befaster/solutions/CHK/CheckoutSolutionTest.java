@@ -43,6 +43,12 @@ public class CheckoutSolutionTest {
     public void testCheckoutSolution_withInvalidAndValidProduct() {
     	assertThat(checkoutSolution.checkout("AX"), equalTo(-1));
     }
+    
+    @Test
+    public void testCheckoutSolution_withEEBProducts() {
+    	assertThat(checkoutSolution.checkout("EEB"), equalTo(40));
+    }
 }
+
 
 
