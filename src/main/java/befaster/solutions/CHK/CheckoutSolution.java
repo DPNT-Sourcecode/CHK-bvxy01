@@ -66,7 +66,7 @@ public class CheckoutSolution {
 	    			
 	    			total += offerCount * offer.getPrice();
 	    			
-	    			if (item == 'E') {
+	    			if (item == 'E' && offer.getPrice() == 0) {
 	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
 	    				total -= bCount * priceMap.get('B');
 	    				
@@ -99,3 +99,4 @@ public class CheckoutSolution {
     	}
     }
 }
+

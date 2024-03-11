@@ -46,6 +46,7 @@ public class CheckoutSolutionTest {
     
     @Test
     public void testCheckoutSolution_withEEBProducts() {
-    	assertThat(checkoutSolution.checkout("BEE"), equalTo(40));
+    	assertThat(checkoutSolution.checkout("BEE"), equalTo(80));
     }
 }
+
