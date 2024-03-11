@@ -58,11 +58,14 @@ public class CheckoutSolution {
     		int price = priceMap.get(item);
     		List<Offer> offerList = offersMap.getOrDefault(item, new ArrayList<>());
     		
+    		int maxDiscount = 0;
     		for (Offer offer : offerList) {
     		
 	    		if (offer != null) {
 	    			
 	    			int offerCount = count / offer.getQuantity();
+	    			
+	    			int discount = offerCount * (offer.getQuantity() * price - offer.getPrice());
 	    			
 	    			total += offerCount * offer.getPrice();
 	    			
@@ -75,9 +78,7 @@ public class CheckoutSolution {
 	    			
 	    			if (item == 'A') {
 	    				int aCount = checkoutItems.getOrDefault('A', 0);
-	    				if (aCount % 5 == 0) {
-	    					
-	    				}
+	    				
 	    			}
 	    			
 	    			
@@ -109,6 +110,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
