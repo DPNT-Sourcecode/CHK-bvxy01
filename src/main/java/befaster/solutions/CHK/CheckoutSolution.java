@@ -1,12 +1,13 @@
 package befaster.solutions.CHK;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CheckoutSolution {
 	
 	private static Map<Character, Integer> priceMap = new HashMap<>();
-	private static Map<Character, Offer> offersMap = new HashMap<>();
+	private static Map<Character, List<Offer>> offersMap = new HashMap<>();
 	
 	
 	static {
@@ -88,6 +89,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
