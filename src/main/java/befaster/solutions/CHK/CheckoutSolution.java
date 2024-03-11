@@ -71,6 +71,16 @@ public class CheckoutSolution {
 	    				total -= bCount * priceMap.get('B');
 	    				
 	    			}
+	    			
+	    			
+	    			if (item == 'A') {
+	    				int aCount = checkoutItems.getOrDefault('A', 0);
+	    				if (aCount % 5 == 0) {
+	    					
+	    				}
+	    			}
+	    			
+	    			
 	    			count %= offer.getQuantity();
 	    		}
     		}
@@ -99,6 +109,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
