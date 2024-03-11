@@ -60,25 +60,22 @@ public class CheckoutSolution {
     		List<Offer> offerList = offersMap.getOrDefault(item, new ArrayList<>());
     		
     		if (!offerList.isEmpty()) {
+    			offerList.sort(Comparator.comparingInt(Offer::getQuantity).reversed());
     			
     			int remaining = count;
     			int offerIndex = 0;
-    			int maxDiscount = 0;
     			
     			while (remaining > 0 && offerIndex < offerList.size()) {
     				
     				Offer offer = offerList.get(offerIndex);
     				int offerCount = remaining / offer.getQuantity();
     				int offerPrice = offerCount * offer.getPrice();
-    				int offerDiscount = offerCount * (offer.getQuantity() * price - offer.getPrice());
     				
 	    			if (item == 'E') {
 	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
 	    				total -= bCount * priceMap.get('B');
 	    				
 	    			}
-	    			
-	    			maxDiscount = Math.max(maxDiscount, total)
 	    			
 	    			total += offerPrice;
 	    			remaining %= offer.getQuantity();
@@ -88,6 +85,8 @@ public class CheckoutSolution {
     			
         		total += remaining * price;
     			
+    		} else {
+    			total += count * price;
     		}
     	}
     	
@@ -112,6 +111,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
