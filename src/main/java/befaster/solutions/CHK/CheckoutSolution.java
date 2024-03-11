@@ -1,6 +1,7 @@
 package befaster.solutions.CHK;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,24 +59,50 @@ public class CheckoutSolution {
     		int price = priceMap.get(item);
     		List<Offer> offerList = offersMap.getOrDefault(item, new ArrayList<>());
     		
-    		for (Offer offer : offerList) {
-    		
-	    		if (offer != null) {
-	    			
-	    			int offerCount = count / offer.getQuantity();
-	    			
+    		if (!offerList.isEmpty()) {
+    			offerList.sort(Comparator.comparingInt(Offer::getQuantity).reversed());
+    			
+    			int remaining = count;
+    			int offerIndex = 0;
+    			
+    			while (remaining > 0 && offerIndex < offerList.size()) {
+    				
+    				Offer offer = offerList.get(offerIndex);
+    				int offerCount = remaining / offer.getQuantity();
+    				int offerPrice = offerCount * offer.getPrice();
+    				
 	    			if (item == 'E') {
 	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
 	    				total -= bCount * priceMap.get('B');
 	    				
 	    			}
-	    		
-	    			total += offerCount * offer.getPrice();
-	    			count %= offer.getQuantity();
-	    		}
+	    			
+	    			total += offerPrice;
+	    			remaining %= offer.getQuantity();
+	    			offerIndex++;
+    				
+    			}
+    			
     		}
     		
-    		total += count * price;
+//    		for (Offer offer : offerList) {
+//    		
+//	    		if (offer != null) {
+//	    			
+//	    			int offerCount = count / offer.getQuantity();
+//	    			
+//	    			if (item == 'E') {
+//	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
+//	    				total -= bCount * priceMap.get('B');
+//	    				
+//	    			}
+//	    		
+//	    			total += offerCount * offer.getPrice();
+//	    			count %= offer.getQuantity();
+//	    		}
+//    		}
+//    		
+//    		total += count * price;
     	}
     	
     	return total;
@@ -99,3 +126,4 @@ public class CheckoutSolution {
     	}
     }
 }
+
