@@ -64,8 +64,6 @@ public class CheckoutSolution {
 	    			
 	    			int offerCount = count / offer.getQuantity();
 	    			
-	    			total += offerCount * offer.getPrice();
-	    			
 	    			if (item == 'E') {
 	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
 	    				total -= bCount * priceMap.get('B');
@@ -74,10 +72,11 @@ public class CheckoutSolution {
 	    			
 	    			if (item == 'A') {
 	    				int aCount = Math.max(checkoutItems.getOrDefault('A', 0), offerCount);
-	    				total -= aCount * priceMap.get('A');
+	    				
+	    				
 	    			}
 	    		
-	    			
+	    			total += offerCount * offer.getPrice();
 	    			count %= offer.getQuantity();
 	    		}
     		}
@@ -106,6 +105,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
