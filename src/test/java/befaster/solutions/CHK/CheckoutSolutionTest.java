@@ -49,7 +49,3 @@ public class CheckoutSolutionTest {
     	assertThat(checkoutSolution.checkout("BEE"), equalTo(40));
     }
 }
-
-
-
-

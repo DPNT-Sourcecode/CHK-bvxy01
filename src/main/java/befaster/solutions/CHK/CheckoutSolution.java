@@ -1,5 +1,6 @@
 package befaster.solutions.CHK;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,10 +18,16 @@ public class CheckoutSolution {
 		priceMap.put('D', 15);
 		priceMap.put('E', 40);
 		
-		offersMap.put('A', new Offer(3, 130));
-		offersMap.put('A', new Offer(5, 200));
-		offersMap.put('B', new Offer(2, 45));
-		offersMap.put('E', new Offer(2, 0));
+		List<Offer> listA = new ArrayList<>();
+		listA.add(new Offer(3, 130));
+		listA.add(new Offer(5, 200));
+		offersMap.put('A', listA);
+		List<Offer> listB = new ArrayList<>();
+		listB.add(new Offer(2, 45));
+		offersMap.put('B', listB);
+		List<Offer> listE = new ArrayList<>();
+		listE.add( new Offer(2, 0));
+		offersMap.put('E', listE);
 	}
 	
 	
@@ -49,20 +56,23 @@ public class CheckoutSolution {
     		}
     		
     		int price = priceMap.get(item);
-    		Offer offer = offersMap.getOrDefault(item, null);
+    		List<Offer> offerList = offersMap.getOrDefault(item, new ArrayList<>());
     		
-    		if (offer != null) {
-    			
-    			int offerCount = count / offer.getQuantity();
-    			
-    			total += offerCount * offer.getPrice();
-    			
-    			if (item == 'E') {
-    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
-    				total -= bCount * priceMap.get('B');
-    				
-    			}
-    			count %= offer.getQuantity();
+    		for (Offer offer : offerList) {
+    		
+	    		if (offer != null) {
+	    			
+	    			int offerCount = count / offer.getQuantity();
+	    			
+	    			total += offerCount * offer.getPrice();
+	    			
+	    			if (item == 'E') {
+	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
+	    				total -= bCount * priceMap.get('B');
+	    				
+	    			}
+	    			count %= offer.getQuantity();
+	    		}
     		}
     		
     		total += count * price;
@@ -89,8 +99,3 @@ public class CheckoutSolution {
     	}
     }
 }
-
-
-
-
-
