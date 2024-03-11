@@ -59,28 +59,36 @@ public class CheckoutSolution {
     		int price = priceMap.get(item);
     		List<Offer> offerList = offersMap.getOrDefault(item, new ArrayList<>());
     		
-			int remaining = count;
-			int offerIndex = 0;
-			
-			while (remaining > 0 && offerIndex < offerList.size()) {
-				
-				Offer offer = offerList.get(offerIndex);
-				int offerCount = remaining / offer.getQuantity();
-				int offerPrice = offerCount * offer.getPrice();
-				
-    			if (item == 'E') {
-    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
-    				total -= bCount * priceMap.get('B');
+    		if (!offerList.isEmpty()) {
+    			
+    			int remaining = count;
+    			int offerIndex = 0;
+    			int maxDiscount = 0;
+    			
+    			while (remaining > 0 && offerIndex < offerList.size()) {
+    				
+    				Offer offer = offerList.get(offerIndex);
+    				int offerCount = remaining / offer.getQuantity();
+    				int offerPrice = offerCount * offer.getPrice();
+    				int offerDiscount = offerCount * (offer.getQuantity() * price - offer.getPrice());
+    				
+	    			if (item == 'E') {
+	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
+	    				total -= bCount * priceMap.get('B');
+	    				
+	    			}
+	    			
+	    			maxDiscount = Math.max(maxDiscount, total)
+	    			
+	    			total += offerPrice;
+	    			remaining %= offer.getQuantity();
+	    			offerIndex++;
     				
     			}
     			
-    			total += offerPrice;
-    			remaining %= offer.getQuantity();
-    			offerIndex++;
-				
-			}
-			
-    		total += remaining * price;
+        		total += remaining * price;
+    			
+    		}
     	}
     	
     	return total;
@@ -104,6 +112,7 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
 
 
