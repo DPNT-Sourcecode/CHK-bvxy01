@@ -99,12 +99,3 @@ public class CheckoutSolution {
     	}
     }
 }
-
-
-
-
-
-
-
-
-
