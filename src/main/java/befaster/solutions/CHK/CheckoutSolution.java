@@ -83,26 +83,9 @@ public class CheckoutSolution {
     				
     			}
     			
+        		total += remaining * price;
+    			
     		}
-    		
-//    		for (Offer offer : offerList) {
-//    		
-//	    		if (offer != null) {
-//	    			
-//	    			int offerCount = count / offer.getQuantity();
-//	    			
-//	    			if (item == 'E') {
-//	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
-//	    				total -= bCount * priceMap.get('B');
-//	    				
-//	    			}
-//	    		
-//	    			total += offerCount * offer.getPrice();
-//	    			count %= offer.getQuantity();
-//	    		}
-//    		}
-//    		
-//    		total += count * price;
     	}
     	
     	return total;
@@ -126,4 +109,5 @@ public class CheckoutSolution {
     	}
     }
 }
+
 

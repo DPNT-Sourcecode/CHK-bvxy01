@@ -53,4 +53,10 @@ public class CheckoutSolutionTest {
     public void testCheckoutSolution_withAAAAAProducts() {
     	assertThat(checkoutSolution.checkout("AAAAA"), equalTo(200));
     }
+    
+    @Test
+    public void testCheckoutSolution_withAAAAAAAAProducts() {
+    	assertThat(checkoutSolution.checkout("AAAAAAAA"), equalTo(330));
+    }
 }
+
