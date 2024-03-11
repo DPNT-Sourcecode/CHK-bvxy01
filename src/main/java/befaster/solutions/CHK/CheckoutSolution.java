@@ -26,7 +26,7 @@ public class CheckoutSolution {
 		listB.add(new Offer(2, 45));
 		offersMap.put('B', listB);
 		List<Offer> listE = new ArrayList<>();
-		listE.add( new Offer(2, 0));
+		listE.add( new Offer(2, 40));
 		offersMap.put('E', listE);
 	}
 	
@@ -66,7 +66,7 @@ public class CheckoutSolution {
 	    			
 	    			total += offerCount * offer.getPrice();
 	    			
-	    			if (item == 'E' && offer.getPrice() == 0) {
+	    			if (item == 'E') {
 	    				int bCount = Math.min(checkoutItems.getOrDefault('B', 0), offerCount);
 	    				total -= bCount * priceMap.get('B');
 	    				
@@ -99,4 +99,5 @@ public class CheckoutSolution {
     	}
     }
 }
+
 
